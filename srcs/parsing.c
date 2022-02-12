@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:05:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/12 13:09:19 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/12 15:27:51 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-static int	check_line(const char *str)
+int	check_line(const char *str)
 {
 	int		nbr;
 	t_index	i;

@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 12:54:05 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/12 13:09:03 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/12 16:08:23 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,14 @@ SRCS_DIR	=	srcs
 
 LIBFT_DIR	=	libft
 
-SRCS		=	main.c	\
+SRCS		=	main.c		\
+				display.c	\
+				game.c		\
 				parsing.c
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
-CFLAGS		=	-Wall -Werror -Wextra -I includes -I $(LIBFT_DIR)/includes
+CFLAGS		=	-I includes -I $(LIBFT_DIR)/includes
 
 CLIBS		=	-L . -lft
 
