@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 12:54:05 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/12 16:08:23 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/12 19:04:56 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,12 @@ LIBFT_DIR	=	libft
 SRCS		=	main.c		\
 				display.c	\
 				game.c		\
+				algo.c		\
 				parsing.c
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
-CFLAGS		=	-I includes -I $(LIBFT_DIR)/includes
+CFLAGS		=	-I includes -I $(LIBFT_DIR)/includes -g3 -fsanitize=address
 
 CLIBS		=	-L . -lft
 

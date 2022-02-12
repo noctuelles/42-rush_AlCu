@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:04:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/12 16:09:20 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/12 19:16:30 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include "get_next_line.h"
 
 void	free_game(t_game *game)
@@ -22,8 +23,9 @@ void	free_game(t_game *game)
 	game->exit_game = TRUE;
 	ft_lstclear(&game->lines, free);
 	free(game->board);
-	if (game->fd != 0)
-		close(game->fd);
+	close(game->fd);
+	if (game->fd_stdin != 0)
+		close(game->fd_stdin);
 }
 
 static t_bool	continue_game(t_game *game)
@@ -51,7 +53,7 @@ static int	get_user_input(t_game *game)
 
 	ft_printf(STR_CHOICE);
 	ft_printf(STR_CYAN);
-	line = (const char *) get_next_line(STDIN);
+	line = (const char *) get_next_line(game->fd_stdin);
 	ft_printf(STR_RST);
 	if (!line)
 		return (0);
@@ -73,12 +75,12 @@ static int	get_user_input(t_game *game)
 
 t_bool	game_loop(t_game *game)
 {
-	write(STDOUT, "\n", 1);
+	write(STDOUT, STR_NWL, 1);
 	display_board(*game);
 	if (game->curr_player == AI)
 	{
-		game->action = 0;
-		ft_putstr("\nAI do nothing.\n");
+		game->action = get_ai_input(game);
+		ft_printf(STR_AI_PLAY, game->action);
 		game->curr_player = HUMAN; 
 	}
 	else if (game->curr_player == HUMAN)

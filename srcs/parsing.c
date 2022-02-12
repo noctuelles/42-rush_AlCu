@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:05:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/12 15:27:51 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/12 19:08:01 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ static int	parse_from_stdin(t_game *game)
 		}
 		ft_lstadd_back(&game->lines, elem); 
 	}
+	close(STDIN);
+	game->fd_stdin = open("/dev/tty", O_RDONLY);
+	if (game->fd_stdin == -1)
+		return (0);
 	if (!is_ok || fill_board_from_list(game) == 0)
 		return (0);
 	else
@@ -113,6 +117,7 @@ static int	parse_from_file(t_game *game, const char *path)
 		}
 		ft_lstadd_back(&game->lines, elem); 
 	}
+	game->fd_stdin = STDIN;
 	if (fill_board_from_list(game) == 0)
 		return (0);
 	else

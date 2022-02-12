@@ -6,15 +6,16 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:50:36 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/12 16:09:24 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/12 19:14:06 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALCU_H
 # define ALCU_H
 
-#include "libft.h"
+# include "libft.h"
 
+# define STR_ALEA "133232121312132123123122312132132132133213212321323122131312332132121321332132133122311323213213123122132132321233122312311321231312312321231132131321312131221321313312312131213121312131213321322131231221312321321312323213121312"
 # define STR_ERROR "ERROR\n"
 # define STR_ELEM1 "| "
 # define STR_ELEM2 "|\n"
@@ -27,6 +28,8 @@
 # define STR_HUMAN_WIN "{93}Congratulation ! Human race is still clever.\n{0}"
 # define STR_EXIT "You're fleeing ! Goodbye...\n"
 # define STR_CLR_SCREEN "\033[H\033[J"
+# define STR_AI_PLAY "\n{1;35}AI took %d.{0}\n"
+# define STR_NWL "\n"
 
 typedef enum e_player
 {
@@ -41,6 +44,7 @@ typedef struct s_game
 	t_list		*lines;
 	t_bool		exit_game;
 	int			fd;
+	int			fd_stdin;
 	int			action;
 	t_sindex	curr_heap;
 	t_player	curr_player;
@@ -65,5 +69,9 @@ void	display_board(t_game game);
 void	display_winner(t_player winner);
 t_bool	game_loop(t_game *game);
 void	free_game(t_game *game);
+
+/* algo.c */
+
+int get_ai_input(t_game *game);
 
 #endif
