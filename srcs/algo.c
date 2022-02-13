@@ -6,14 +6,14 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:22:49 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/13 14:33:16 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/13 14:48:28 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AlCu.h"
 #include "libft.h"
 
-static int change_decision(int nb)
+static unsigned int	change_decision(int nb)
 {
 	if (nb == 0)
 		return (1);
@@ -36,7 +36,7 @@ unsigned int	get_ai_input(t_game *game)
 {
 	t_index			i;
 	unsigned int	action;
-	int				decision;
+	unsigned int	decision;
 	
 	i = 0;
 	decision = 1;
