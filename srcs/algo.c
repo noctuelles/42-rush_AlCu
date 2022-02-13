@@ -6,13 +6,12 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:22:49 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/12 19:01:02 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/13 14:33:16 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AlCu.h"
 #include "libft.h"
-#include <assert.h>
 
 static int change_decision(int nb)
 {
@@ -22,32 +21,31 @@ static int change_decision(int nb)
 		return (0);
 }
 
-static int	get_rand_action(int *action)
+static unsigned int	get_rand_action(unsigned int *action)
 {
-	const char	*str_alea = STR_ALEA;
-	static int	alea = 23;
+	const char		*str_alea = STR_ALEA;
+	static t_index	alea = 23;
 	
-	if (alea == sizeof(STR_ALEA) - 1)
+	if (alea == sizeof(STR_ALEA) - 2)
 		alea = 0;
 	*action = str_alea[alea++] - '0';
 	return (*action);
 }
 
-int get_ai_input(t_game *game)
+unsigned int	get_ai_input(t_game *game)
 {
-	int			i;
-	int			action;
-	int			decision;
+	t_index			i;
+	unsigned int	action;
+	int				decision;
 	
 	i = 0;
 	decision = 1;
-	while (i < game->curr_heap - 1)
+	while (i < game->curr_heap)
 	{
 		if (game->board[i] % 4 == decision)
 			decision = change_decision(decision);
 		i++;
 	}
-	i = game->curr_heap;
 	action = 1 ;
 	while (action < 4)
 	{

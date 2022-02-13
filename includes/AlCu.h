@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:50:36 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/12 19:14:06 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/13 14:33:29 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define STR_CHOICE "\n{93;4}Please choose between 1 and 3 items.{0}\n\n"
 # define STR_CHOICE_INV "{1;96}%s{0} - {31}Invalid choice.{0}\n"
 # define STR_HUMAN_LOOSE "{31}The human race has been defeated ! You lost.\n{0}"
-# define STR_HUMAN_WIN "{93}Congratulation ! Human race is still clever.\n{0}"
-# define STR_EXIT "You're fleeing ! Goodbye...\n"
+# define STR_HUMAN_WIN "\n{93}Congratulation ! Human race is still clever.\n{0}"
+# define STR_EXIT "{31}You're fleeing ! Goodbye...{0}\n"
 # define STR_CLR_SCREEN "\033[H\033[J"
 # define STR_AI_PLAY "\n{1;35}AI took %d.{0}\n"
 # define STR_NWL "\n"
@@ -39,39 +39,39 @@ typedef enum e_player
 
 typedef struct s_game
 {
-	int			*board;
-	size_t		board_size;
-	t_list		*lines;
-	t_bool		exit_game;
-	int			fd;
-	int			fd_stdin;
-	int			action;
-	t_sindex	curr_heap;
-	t_player	curr_player;
-	t_player	winner;
+	unsigned int	*board;
+	size_t			board_size;
+	t_list			*lines;
+	t_bool			exit_game;
+	int				fd;
+	int				fd_stdin;
+	int				action;
+	t_index			curr_heap;
+	t_player		curr_player;
+	t_player		winner;
 }				t_game;
 
 /* main.c */
 
-int	throw_error(t_game *game);
+int				throw_error(t_game *game);
 
 /* parsing.c */
 
-int	check_line(const char *str);
-int	parse_map(t_game *game, int argc, char **argv);
+unsigned int	check_line(const char *str);
+int				parse_map(t_game *game, int argc, char **argv);
 
 /* display.c */ 
 
-void	display_board(t_game game);
+void			display_board(t_game game);
 
 /* game.c */
 
-void	display_winner(t_player winner);
-t_bool	game_loop(t_game *game);
-void	free_game(t_game *game);
+void			display_winner(t_player winner);
+t_bool			game_loop(t_game *game);
+void			free_game(t_game *game);
 
 /* algo.c */
 
-int get_ai_input(t_game *game);
+unsigned int	get_ai_input(t_game *game);
 
 #endif

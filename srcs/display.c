@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:23:27 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/12 16:04:13 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/13 14:37:38 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "AlCu.h"
 #include <unistd.h>
 
-static int	find_biggest(t_game game)
+static unsigned int	find_biggest(t_game game)
 {
-	t_index	i;
-	int		biggest;
+	t_index			i;
+	unsigned int	biggest;
 
 	i = 0;
 	biggest = game.board[i++];
@@ -30,7 +30,7 @@ static int	find_biggest(t_game game)
 	return (biggest);
 }
 
-static void	put_elem(int nbr)
+static void	put_elem(unsigned int nbr)
 {
 	t_index	i;
 

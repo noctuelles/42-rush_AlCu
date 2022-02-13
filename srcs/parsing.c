@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:05:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/12 19:08:01 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/13 14:42:54 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-int	check_line(const char *str)
+/* check_line() checks if the line we're scanning is following the subject
+ * rules. */
+
+unsigned int	check_line(const char *str)
 {
-	int		nbr;
-	t_index	i;
-	size_t	line_len;
+	unsigned int	nbr;
+	t_index			i;
+	size_t			line_len;
 
 	line_len = ft_strlen(str);
 	if (line_len <= 1 || line_len > 6)
@@ -47,7 +50,8 @@ static int	fill_board_from_list(t_game *game)
 	game->board_size = ft_lstsize(game->lines);
 	if (game->board_size == 0)
 		return (0);
-	game->board = (int *) malloc(game->board_size * sizeof (int));
+	game->board = (unsigned int *) malloc(game->board_size
+			* sizeof (unsigned int));
 	if (!game->board)
 		return (0);
 	elem = game->lines;
@@ -61,7 +65,6 @@ static int	fill_board_from_list(t_game *game)
 		elem = elem->next;
 		i++;
 	}
-	ft_lstclear(&game->lines, free);
 	return (1);
 }
 

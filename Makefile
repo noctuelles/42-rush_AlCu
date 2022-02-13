@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 12:54:05 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/12 19:04:56 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/13 14:19:30 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS		=	main.c		\
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
-CFLAGS		=	-I includes -I $(LIBFT_DIR)/includes -g3 -fsanitize=address
+
+CFLAGS		=	-Wall -Werror -Wextra -MD -I includes -I $(LIBFT_DIR)/includes
 
 CLIBS		=	-L . -lft
 
@@ -58,5 +59,7 @@ $(LIBFT):
 $(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c
 				@mkdir -p $(dir $@)
 				$(CC) $(CFLAGS) -c $< -o $@ 
+
+-include $(OBJS:.o=.d)
 
 .PHONY:			all clean fclean re
