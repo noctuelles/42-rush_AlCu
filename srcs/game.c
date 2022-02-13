@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:04:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/13 14:45:28 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/13 15:15:55 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	free_game(t_game *game)
 	game->exit_game = TRUE;
 	ft_lstclear(&game->lines, free);
 	free(game->board);
-	close(game->fd);
+	if (game->fd > 0)
+		close(game->fd);
 	if (game->fd_stdin > 0)
 		close(game->fd_stdin);
 	get_next_line(GNL_FLUSH);

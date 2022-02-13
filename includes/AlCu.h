@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:50:36 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/13 14:33:29 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/13 15:16:43 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define STR_RST "{0}\n"
 # define STR_CHOICE "\n{93;4}Please choose between 1 and 3 items.{0}\n\n"
 # define STR_CHOICE_INV "{1;96}%s{0} - {31}Invalid choice.{0}\n"
-# define STR_HUMAN_LOOSE "{31}The human race has been defeated ! You lost.\n{0}"
-# define STR_HUMAN_WIN "\n{93}Congratulation ! Human race is still clever.\n{0}"
+# define STR_HUMAN_LOOSE "{31;1;4}The human race has been defeated ! You lost.\n\n{0}"
+# define STR_HUMAN_WIN "\n{93;1;4}Congratulation ! Human race is still clever.\n\n{0}"
 # define STR_EXIT "{31}You're fleeing ! Goodbye...{0}\n"
 # define STR_CLR_SCREEN "\033[H\033[J"
 # define STR_AI_PLAY "\n{1;35}AI took %d.{0}\n"
